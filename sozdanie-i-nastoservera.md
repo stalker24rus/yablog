@@ -44,27 +44,27 @@ Port 55555
  
 ## 1. Общие настройки:
 
-*1 Обновляем информацию об пакетах  
+1. Обновляем информацию об пакетах  
 > sudo apt-get update  
 
-*2 Устанавливаем необходимые пакеты для работы. 
+2. Устанавливаем необходимые пакеты для работы. 
 > sudo apt-get install -y vim bash tmux htop git curl wget unzip zip gcc build-essential make  
 
-*3 Устанавливаем дополнительные пакеты:
+3. Устанавливаем дополнительные пакеты:
 > sudo apt-get install -y zsh tree redis-server nginx zlib1g-dev libbz2-dev libreadline-dev llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev liblzma-dev python3-dev python-imaging python3-lxml libxslt-dev python-libxml2 python-libxslt1 libffi-dev libssl-dev python-dev gnumeric libsqlite3-dev libpq-dev libxml2-dev libxslt1-dev libjpeg-dev libfreetype6-dev libcurl4-openssl-dev supervisor  
 
-*4 Устанавливаем oh-my-zsh:
+4. Устанавливаем oh-my-zsh:
 > sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"  
 
-*5 Создаем алиасы:  
+5. Создаем алиасы:  
 > vim ~/.zshrc  
 >    alias cls="clear". 
 
-*6 Устанавливаем zsh как shell по умолчанию:  
+6. Устанавливаем zsh как shell по умолчанию:  
 > chsh -s $(witch zsh)  
 
 ## 2. Установка Python из исходников
-*1 создаем директорию, где будут храниться исходники
+Cоздаем директорию, где будут храниться исходники
 > mkdir ~/code  
 >  
 > wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz ; \  
