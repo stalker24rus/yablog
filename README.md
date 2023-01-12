@@ -8,4 +8,5 @@
 [[ PY ] Django Framework: Шпаргалка по быстрому старту](https://github.com/stalker24rus/yablog/blob/main/articles/release/py-django-shpargalka-po-bystromu-startu.md) 
 
 [[ Linux ] Развертывание удаленного сервера](https://github.com/stalker24rus/yablog/blob/main/articles/release/sozdanie-i-nastoservera.md)  
-[[ > ] Vim: шпаргалка](https://github.com/stalker24rus/yablog/blob/main/articles/release/vim-spargalka.md)  
+[[ > ] vim: шпаргалка](https://github.com/stalker24rus/yablog/blob/main/articles/release/vim-spargalka.md)  
+[[ > ] tmux: шпаргалка](https://github.com/stalker24rus/yablog/blob/main/articles/release/shpargalka-po-tmux.md)
