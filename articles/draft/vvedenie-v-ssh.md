@@ -47,55 +47,49 @@ user - это имя пользователя на удаленном серве
 При попытке подключения сервер запросит пароль от пользователя, после чего осуществится переход в оболочку сервера (bash, zsh и т.п.).  
 
 ## 3. Генерация ключей  
-### 3.1.1. Простой способ, в терминале вводим ssh-keygen:  
+#### 3.1.1. Простой способ, в терминале вводим ssh-keygen:  
 > $ ssh-keygen
 
-### 3.1.2. Запускается процесс генерации ключей  
+#### 3.1.2. Запускается процесс генерации ключей  
 > Generating public/private rsa key pair.  
 
- 3.1.3. После генерирования ключей будут запрошены место размещения ключа и дополнительный пароль проверяемый перед использованием ключей (можно оставить свободным).
+#### 3.1.3. После генерирования ключей будут запрошены место размещения ключа и дополнительный пароль проверяемый перед использованием ключей (можно оставить свободным).  
+> Enter file in which to save the key (~/.ssh/some_key):  
+> Enter passphrase (empty for no passphrase):  
+> Enter same passphrase again:  
 
-Enter file in which to save the key (~/.ssh/some_key):
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
+#### 3.1.4. Следующим собщением указывается куда были сохранены ключи и идентификатор ключа.  
+> Your identification has been saved in ~/.ssh/some_key.  
+> Your public key has been saved in ~/.ssh/some_key.pub.  
+> The key fingerprint is:  
+> SHA256:puyf3JstBjXWtwbMf7zqz2NiP7hu/lgBhgRAN708DiA example@example.local  
+> The key's randomart image is:  
+> +---[RSA 3072]----+  
+> |      .o.+o.     |  
+> |     E .. o..    |  
+> |      . . .=.o   |  
+> |         .++* o  |  
+> |        Soo..+ + |  
+> |     . o.  .  + +|  
+> |      o  .   ..o.|  
+> |     . . ooo =+= |  
+> |      ..+.+oBBO=o|  
+> +----[SHA256]-----+  
 
-3.1.4. Следующим собщением указывается куда были сохранены ключи и идентификатор ключа.
-
-Your identification has been saved in ~/.ssh/some_key.
-Your public key has been saved in ~/.ssh/some_key.pub.
-The key fingerprint is:
-SHA256:puyf3JstBjXWtwbMf7zqz2NiP7hu/lgBhgRAN708DiA example@example.local
-The key's randomart image is:
-+---[RSA 3072]----+
-|      .o.+o.     |
-|     E .. o..    |
-|      . . .=.o   |
-|         .++* o  |
-|        Soo..+ + |
-|     . o.  .  + +|
-|      o  .   ..o.|
-|     . . ooo =+= |
-|      ..+.+oBBO=o|
-+----[SHA256]-----+
-
-В нашем случае, созданные пары ключей (some_key и some_key.pub) сохраняются в папку ~/.ssh, .
-
-some_key - приватный ключ, который нужно хранить в секрете,
-
-some_key.pub - ключ готовый к распространению.
-
-3.1.5. Прочитать публичный ключ можно командой cat:
-
-$cat ~/.ssh/some_key.pub
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCrJMwk9v2eJKXND7R2GQcb31S8R0ChYmCYY5NliZ8AeBUc6Fkqye5I6kMIRyBfjI/EEJ80zvWikIcP0lJbR4Dz98+lAEF3YVl673obYbNCh/pDB9a0LIu2izoRdDNgM+N+I1vvRpkgEhRfceW3g1duGYOoBc2FzCuT/d3H0XDZMTRP2aRnaiQSfqrRyc2vBob+S8hg1f/tvA+6uUrijWTc60FjhHvZIBcyXj3w4RDtfH2TotVJSqmEfo8vWgB7C0sfFveptoQugo4Vrr8Et/gCTTHgMthCvdnSzpJDozQI6LuxDZCSHsoxpzM4fPNdEl1TnopYT3wgNCFvs7drKwn4X/cLxM28VG3mM8JORJRIX8demqrjRf7VqwjYXTQqHKI01OX7WpvMefaUrap8DNhyD3jLUpJ6GJ5JI8MeRf7YC3pDaQNpKg6X7K4JeuYad04XaZlDdgzJ+5NfufBzxU+GhSqu6tixR8uixgjninJhEVjaZAhPVXGUnP5CFTYF5Fs= example@example.local
-
+В нашем случае, созданные пары ключей (some_key и some_key.pub) сохраняются в папку ~/.ssh.  
+> some_key - приватный ключ, который нужно хранить в секрете,  
+> some_key.pub - ключ готовый к распространению.  
+  
+#### 3.1.5. Прочитать публичный ключ можно командой cat:  
+> $cat ~/.ssh/some_key.pub  
+> ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCrJMwk9v2eJKXND7R2GQcb31S8R0ChYmCYY5NliZ8AeBUc6Fkqye5I6kMIRyBfjI/EEJ80zvWikIcP0lJbR4Dz98+lAEF3YVl673obYbNCh/pDB9a0LIu2izoRdDNgM+N+I1vvRpkgEhRfceW3g1duGYOoBc2FzCuT/d3H0XDZMTRP2aRnaiQSfqrRyc2vBob+S8hg1f/tvA+6uUrijWTc60FjhHvZIBcyXj3w4RDtfH2TotVJSqmEfo8vWgB7C0sfFveptoQugo4Vrr8Et/gCTTHgMthCvdnSzpJDozQI6LuxDZCSHsoxpzM4fPNdEl1TnopYT3wgNCFvs7drKwn4X/cLxM28VG3mM8JORJRIX8demqrjRf7VqwjYXTQqHKI01OX7WpvMefaUrap8DNhyD3jLUpJ6GJ5JI8MeRf7YC3pDaQNpKg6X7K4JeuYad04XaZlDdgzJ+5NfufBzxU+GhSqu6tixR8uixgjninJhEVjaZAhPVXGUnP5CFTYF5Fs= example@example.local  
+  
 Mac OS. В буфер обмена содержимое файла some_key.pub можно скопировать в буфер обмена командой pbcopy, а вставить - pbpaste:
+> $pbcopy < some_key.pub  
+> $pbpaste  
+> ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCrJMwk9v2eJKXND7R2GQcb31S8R0ChYmCYY5NliZ8AeBUc6Fkqye5I6kMIRyBfjI/EEJ80zvWikIcP0lJbR4Dz98+lAEF3YVl673obYbNCh/pDB9a0LIu2izoRdDNgM+N+I1vvRpkgEhRfceW3g1duGYOoBc2FzCuT/d3H0XDZMTRP2aRnaiQSfqrRyc2vBob+S8hg1f/tvA+6uUrijWTc60FjhHvZIBcyXj3w4RDtfH2TotVJSqmEfo8vWgB7C0sfFveptoQugo4Vrr8Et/gCTTHgMthCvdnSzpJDozQI6LuxDZCSHsoxpzM4fPNdEl1TnopYT3wgNCFvs7drKwn4X/cLxM28VG3mM8JORJRIX8demqrjRf7VqwjYXTQqHKI01OX7WpvMefaUrap8DNhyD3jLUpJ6GJ5JI8MeRf7YC3pDaQNpKg6X7K4JeuYad04XaZlDdgzJ+5NfufBzxU+GhSqu6tixR8uixgjninJhEVjaZAhPVXGUnP5CFTYF5Fs= example@example.local  
 
-$pbcopy < some_key.pub
-$pbpaste
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCrJMwk9v2eJKXND7R2GQcb31S8R0ChYmCYY5NliZ8AeBUc6Fkqye5I6kMIRyBfjI/EEJ80zvWikIcP0lJbR4Dz98+lAEF3YVl673obYbNCh/pDB9a0LIu2izoRdDNgM+N+I1vvRpkgEhRfceW3g1duGYOoBc2FzCuT/d3H0XDZMTRP2aRnaiQSfqrRyc2vBob+S8hg1f/tvA+6uUrijWTc60FjhHvZIBcyXj3w4RDtfH2TotVJSqmEfo8vWgB7C0sfFveptoQugo4Vrr8Et/gCTTHgMthCvdnSzpJDozQI6LuxDZCSHsoxpzM4fPNdEl1TnopYT3wgNCFvs7drKwn4X/cLxM28VG3mM8JORJRIX8demqrjRf7VqwjYXTQqHKI01OX7WpvMefaUrap8DNhyD3jLUpJ6GJ5JI8MeRf7YC3pDaQNpKg6X7K4JeuYad04XaZlDdgzJ+5NfufBzxU+GhSqu6tixR8uixgjninJhEVjaZAhPVXGUnP5CFTYF5Fs= example@example.local
-
-3.2. Подробный пример [2]
+## 3.2. Подробный пример [2]
 
 $ ssh-keygen \
     -m PEM \
