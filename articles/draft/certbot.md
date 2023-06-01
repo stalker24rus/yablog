@@ -1,0 +1,2 @@
+sudo certbot certonly --standalone 
+
